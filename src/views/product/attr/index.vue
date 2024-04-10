@@ -92,7 +92,7 @@
                 :ref="(vc: any) => inputArr[$index] = vc"
                 v-if="row.flag"
                 @blur="toLook(row, $index)"
-                size="small"
+                size="default"
                 placeholder="请你输入属性值名称"
                 v-model="row.valueName"
               ></el-input>
@@ -103,7 +103,7 @@
             <template v-slot="{ index }">
               <el-button
                 type="primary"
-                size="small"
+                size="default"
                 icon="Delete"
                 @click="attrParams.attrValueList.splice(index, 1)"
               ></el-button>
@@ -142,13 +142,10 @@ let scene = ref<number>(0)
 //收集新增的属性的数据
 let attrParams = reactive<Attr>({
   attrName: '', //新增的属性的名字
-  attrValueList: [
-    //新增的属性值数组
-  ],
+  attrValueList: [],
   categoryId: '', //三级分类的ID
   categoryLevel: 3, //代表的是三级分类
 })
-//准备一个数组:将来存储对应的组件实例el-input
 let inputArr = ref<any>([])
 //监听仓库三级分类ID变化
 watch(
@@ -156,7 +153,6 @@ watch(
   () => {
     //清空上一次查询的属性与属性值
     attrArr.value = []
-    //保证三级分类得有才能发请求
     if (!categoryStore.c3Id) return
     getAttr()
   },
@@ -190,12 +186,12 @@ const updateAttr = (row: Attr) => {
   scene.value = 1
   //将已有的属性对象赋值给attrParams对象即为
   //ES6->Object.assign进行对象的合并
+  //深拷贝来解决点击取消之后还会有数据在那
   Object.assign(attrParams, JSON.parse(JSON.stringify(row)))
 }
 const cancel = () => {
   scene.value = 0
 }
-//添加属性值按钮的回调
 const addAttrValue = () => {
   //点击添加属性值按钮的时候,向数组添加一个属性值对象
   attrParams.attrValueList.push({
@@ -211,7 +207,6 @@ const addAttrValue = () => {
 const save = async () => {
   //发请求
   let result: any = await reqAddOrUpdateAttr(attrParams)
-  //添加属性|修改已有的属性已经成功
   if (result.code == 200) {
     //切换场景
     scene.value = 0
@@ -230,7 +225,7 @@ const save = async () => {
   }
 }
 
-//属性值表单元素失却焦点事件回调
+//对属性值添加的div和input进行切换
 const toLook = (row: AttrValue, $index: number) => {
   //非法情况判断1
   if (row.valueName.trim() == '') {
@@ -269,7 +264,6 @@ const toLook = (row: AttrValue, $index: number) => {
 const toEdit = (row: AttrValue, $index: number) => {
   //相应的属性值对象flag:变为true,展示input
   row.flag = true
-  //nextTick:响应式数据发生变化,获取更新的DOM(组件实例)
   nextTick(() => {
     inputArr.value[$index].focus()
   })
@@ -277,9 +271,7 @@ const toEdit = (row: AttrValue, $index: number) => {
 
 //删除某一个已有的属性方法回调
 const deleteAttr = async (attrId: number) => {
-  //发相应的删除已有的属性的请求
   let result: any = await reqRemoveAttr(attrId)
-  //删除成功
   if (result.code == 200) {
     ElMessage({
       type: 'success',
@@ -295,7 +287,7 @@ const deleteAttr = async (attrId: number) => {
   }
 }
 
-//路由组件销毁的时候，把仓库分类相关的数据清空
+//路由跳转时数据要清空
 onBeforeUnmount(() => {
   //清空仓库的数据
   categoryStore.$reset()
