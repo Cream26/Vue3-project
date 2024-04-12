@@ -1,4 +1,3 @@
-//服务器全部接口返回的数据类型
 export interface ResponseData {
   code: number
   message: string
@@ -12,7 +11,9 @@ export interface SpuData {
   spuName: string
   tmId: number | string
   description: string
+  //已有SPU的图片地址
   spuImageList: null | SpuImg[]
+  //已有SPU的销售属性
   spuSaleAttrList: null | SaleAttr[]
 }
 //数组:元素都是已有SPU数据类型
@@ -82,7 +83,6 @@ export interface SaleAttr {
   flag?: boolean
   saleAttrValue?: string
 }
-//SPU已有的销售属性接口返回数据ts类型
 export interface SaleAttrResponseData extends ResponseData {
   data: SaleAttr[]
 }
@@ -123,3 +123,15 @@ export interface SkuData {
 export interface SkuInfoData extends ResponseData {
   data: SkuData[]
 }
+
+// ResponseData: 这是一个通用的响应格式，包括了code、message和ok三个字段，用于几乎所有的API响应，表明请求是否成功，以及附加的状态码和消息。
+
+// SpuData: 代表了一个特定的产品单位（SPU），其中包含了多种信息，如分类ID（category3Id）、品牌ID（tmId）、产品名称（spuName）、描述（description）、产品图片列表（spuImageList）和销售属性列表（spuSaleAttrList）。
+
+// Trademark: 代表品牌信息，包括品牌ID、品牌名称和品牌logo的URL。
+
+// SpuImg: 代表单个产品的图片信息，包含图片ID、图片名称、图片URL等信息。
+
+// SaleAttr 和 SaleAttrValue: 描述产品的销售属性，例如颜色、尺寸等，SaleAttr是更高一层的属性（如颜色），而SaleAttrValue是具体的属性值（如红色）。
+
+// SkuData: SKU（Stock Keeping Unit）即库存量单位，表示一个具体的商品项，包含了与SPU相同的一些字段如分类ID和品牌ID，但是更具体到商品的价格、重量、描述以及唯一的SKU名称和默认图片等
