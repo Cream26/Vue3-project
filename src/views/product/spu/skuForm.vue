@@ -104,15 +104,13 @@ let attrArr = ref<any>([])
 let saleArr = ref<any>([])
 //照片的数据
 let imgArr = ref<any>([])
-//获取table组件实例
 let table = ref<any>()
 //收集SKU的参数
 let skuParams = reactive<SkuData>({
   //父组件传递过来的数据
-  category3Id: '', //三级分类的ID
+  category3Id: '',
   spuId: '', //已有的SPU的ID
   tmId: '', //SPU品牌的ID
-  //v-model收集
   skuName: '', //sku名字
   price: '', //sku价格
   weight: '', //sku重量
@@ -132,7 +130,6 @@ const initSkuData = async (
   c2Id: number | string,
   spu: any,
 ) => {
-  //收集数据
   skuParams.category3Id = spu.category3Id
   skuParams.spuId = spu.id
   skuParams.tmId = spu.tmId
@@ -154,9 +151,7 @@ const cancel = () => {
   $emit('changeScene', { flag: 0, params: '' })
 }
 
-//设置默认图片的方法回调
 const handler = (row: any) => {
-  //点击的时候,全部图片的的复选框不勾选
   imgArr.value.forEach((item: any) => {
     table.value.toggleRowSelection(item, false)
   })
@@ -170,10 +165,7 @@ defineExpose({
   initSkuData,
 })
 
-//保存按钮的方法
 const save = async () => {
-  //整理参数
-  //平台属性
   skuParams.skuAttrValueList = attrArr.value.reduce((prev: any, next: any) => {
     if (next.attrIdAndValueId) {
       let [attrId, valueId] = next.attrIdAndValueId.split(':')
@@ -184,7 +176,6 @@ const save = async () => {
     }
     return prev
   }, [])
-  //销售属性
   skuParams.skuSaleAttrValueList = saleArr.value.reduce(
     (prev: any, next: any) => {
       if (next.saleIdAndValueId) {
@@ -214,7 +205,6 @@ const save = async () => {
     })
   }
 }
-//自定义事件的方法
 let $emit = defineEmits(['changeScene'])
 </script>
 

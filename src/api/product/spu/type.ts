@@ -107,10 +107,10 @@ export interface saleArr {
   saleAttrValueId: number | string //属性值的ID
 }
 export interface SkuData {
-  category3Id: string | number //三级分类的ID
+  category3Id: string | number
   spuId: string | number //已有的SPU的ID
   tmId: string | number //SPU品牌的ID
-  skuName: string //sku名字
+  skuName: string
   price: string | number //sku价格
   weight: string | number //sku重量
   skuDesc: string //sku的描述
