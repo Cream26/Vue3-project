@@ -85,7 +85,6 @@
         v-show="scene == 2"
         @changeScene="changeScene"
       ></SkuForm>
-      <!-- dialog对话框:展示已有的SKU数据 -->
       <el-dialog v-model="show" title="SKU列表">
         <el-table border :data="skuArr">
           <el-table-column label="SKU名字" prop="skuName"></el-table-column>
@@ -134,7 +133,6 @@ let total = ref<number>(0)
 let spu = ref<any>()
 //获取子组件实例SkuForm
 let sku = ref<any>()
-//存储全部的SKU数据
 let skuArr = ref<SkuData[]>([])
 let show = ref<boolean>(false)
 //监听三级分类ID变化
@@ -198,7 +196,7 @@ const addSku = (row: SpuData) => {
   sku.value.initSkuData(categoryStore.c1Id, categoryStore.c2Id, row)
 }
 
-//查看SKU列表的数据
+//点击查看按钮时，向服务器发请求，获取对应的SKU数据
 const findSku = async (row: SpuData) => {
   let result: SkuInfoData = await reqSkuList(row.id as number)
   if (result.code == 200) {
