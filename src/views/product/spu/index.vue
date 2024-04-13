@@ -47,7 +47,7 @@
                 @click="findSku(row)"
               ></el-button>
               <el-popconfirm
-                :title="`你确定删除${row.spuName}?`"
+                :title="`你确定删除${row.spuName}吗?`"
                 width="200px"
                 @confirm="deleteSpu(row)"
               >
@@ -127,7 +127,6 @@ let pageNo = ref<number>(1)
 let pageSize = ref<number>(3)
 //存储已有的SPU的数据
 let records = ref<Records>([])
-//存储已有SPU总个数
 let total = ref<number>(0)
 //获取子组件实例spu
 let spu = ref<any>()
@@ -206,7 +205,6 @@ const findSku = async (row: SpuData) => {
   }
 }
 
-//删除已有的SPU按钮的回调
 const deleteSpu = async (row: SpuData) => {
   let result: any = await reqRemoveSpu(row.id as number)
   if (result.code == 200) {
@@ -214,7 +212,6 @@ const deleteSpu = async (row: SpuData) => {
       type: 'success',
       message: '删除成功',
     })
-    //获取剩余SPU数据
     getHasSpu(records.value.length > 1 ? pageNo.value : pageNo.value - 1)
   } else {
     ElMessage({
@@ -224,7 +221,6 @@ const deleteSpu = async (row: SpuData) => {
   }
 }
 
-//路由组件销毁前，情况仓库关于分类的数据
 onBeforeUnmount(() => {
   categoryStore.$reset()
 })
