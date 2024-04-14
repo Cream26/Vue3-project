@@ -1,10 +1,9 @@
-//账号信息的ts类型
 export interface ResponseData {
   code: number
   message: string
   ok: boolean
 }
-//代表一个账号信息的ts类型
+//用户信息的ts类型
 export interface User {
   id?: number
   createTime?: string
@@ -15,7 +14,6 @@ export interface User {
   phone?: null
   roleName?: string
 }
-//数组包含全部的用户信息
 export type Records = User[]
 //获取全部用户信息接口返回的数据ts类型
 export interface UserResponseData extends ResponseData {
@@ -46,7 +44,6 @@ export interface AllRoleResponseData extends ResponseData {
   }
 }
 
-//给用户分配职位接口携带参数的ts类型
 export interface SetRoleData {
   roleIdList: number[]
   userId: number
