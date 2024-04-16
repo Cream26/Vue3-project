@@ -1,15 +1,16 @@
 <template>
   <el-card>
-    <div class="box">
-      <img :src="userStore.avatar" alt="" class="avatar" />
-      <div class="bottom">
-        <h3 class="title">{{ getTime() }}好呀{{ userStore.username }}</h3>
-        <p class="subtitle">Cream 甄选</p>
+    <div class="flex items-center">
+      <img :src="userStore.avatar" alt="" class="w-12 h-12 rounded-full" />
+      <div class="ml-5">
+        <h3 class="text-3xl font-extrabold">
+          {{ getTime() }}好呀{{ userStore.username }}
+        </h3>
       </div>
     </div>
   </el-card>
-  <div class="bottoms">
-    <svg-icon name="welcome" width="600px" height="300px"></svg-icon>
+  <div class="mt-2.5 flex justify-center">
+    <svg-icon name="welcome" width="35rem" height="35rem"></svg-icon>
   </div>
 </template>
 
@@ -18,35 +19,3 @@ import { getTime } from '@/utils/time'
 import useUserStore from '@/store/modules/user'
 let userStore = useUserStore()
 </script>
-
-<style scoped lang="scss">
-.box {
-  display: flex;
-
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-
-  .bottom {
-    margin-left: 20px;
-
-    .title {
-      font-size: 30px;
-      font-weight: 900;
-      margin-bottom: 30px;
-    }
-
-    .subtitle {
-      font-style: italic;
-      color: skyblue;
-    }
-  }
-}
-.bottoms {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-</style>

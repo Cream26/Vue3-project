@@ -3,7 +3,6 @@
   <el-button icon="FullScreen" circle @click="fullScreen"></el-button>
 
   <el-popover placement="bottom" title="主题设置" :width="300" trigger="hover">
-    <!-- 表单元素 -->
     <el-form>
       <el-form-item label="主题颜色">
         <el-color-picker
@@ -51,7 +50,6 @@ import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
-//获取骨架的小仓库
 import useLayOutSettingStore from '@/store/modules/setting'
 let layoutSettingStore = useLayOutSettingStore()
 let userStore = useUserStore()
@@ -77,7 +75,6 @@ const logout = async () => {
   $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 
-//颜色组件组件的数据
 const color = ref('rgba(255, 69, 0, 0.68)')
 const predefineColors = ref([
   '#ff4500',
@@ -96,9 +93,7 @@ const predefineColors = ref([
   '#c7158577',
 ])
 
-//switch开关的chang事件进行暗黑模式的切换
 const changeDark = () => {
-  //获取HTML根节点
   let html = document.documentElement
   //判断HTML标签是否有类名dark
   dark.value ? (html.className = 'dark') : (html.className = '')
