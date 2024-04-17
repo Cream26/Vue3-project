@@ -5,18 +5,18 @@
         label="序号"
         type="index"
         align="center"
-        width="100px"
+        width="80px"
       ></el-table-column>
       <el-table-column
         label="名称"
         show-overflow-tooltip
-        width="200px"
+        width="150px"
         prop="skuName"
       ></el-table-column>
       <el-table-column
         label="描述"
         show-overflow-tooltip
-        width="200px"
+        width="150px"
         prop="skuDesc"
       ></el-table-column>
       <el-table-column label="图片" width="150px">
@@ -30,12 +30,12 @@
       </el-table-column>
       <el-table-column
         label="重量"
-        width="200px"
+        width="150px"
         prop="weight"
       ></el-table-column>
       <el-table-column
         label="价格"
-        width="200px"
+        width="150px"
         prop="price"
       ></el-table-column>
       <el-table-column label="操作" width="250px">
