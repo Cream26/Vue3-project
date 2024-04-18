@@ -1,18 +1,86 @@
-# Vue 3 + TypeScript + Vite
+![Cream 甄选](C:\Users\扁洲\Documents\Vue\Vue3-project\public\logo.svg)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Cream selection backend management system
 
-## Recommended IDE Setup
+***
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 📚 Introduction
 
-## Type Support For `.vue` Imports in TS
+Cream Selection is a backend management system based on mainstream frameworks such as [Vue3](https://cn.vuejs.org/), [Typescript](https://www.typescriptlang.org/),[ Element Plus](https://element-plus.org/zh-CN/guide/design.html), [pinpa](https://pinia.vuejs.org/zh/),[ tailwind css](https://tailwindcss.com/), etc.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+***
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## ⭐️ Show your support
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Give a ⭐️ if this project helped you!
+
+***
+
+## 🤝 Contributing
+
+First of all, I am very grateful to Mr. Shang Silicon Valley for providing the interface document.
+
+- Product-related interfaces: http://139.198.104.58:8209/swagger-ui.html
+- user-related interface: http://139.198.104.58:8212/swagger-ui.html#/
+
+**super administrator** account
+
+- **account: admin**
+- **password: 111111**
+
+## 🚀 Feature
+
+- **User login and logout**
+- **Big data screen**
+- **Product management**: Implement addition, deletion, modification and query of data
+  - **Brand management**
+  - **Property management**
+  - **SPU management**
+  - **SKU management**
+
+- **Authority management**：Mainly the addition, deletion, modification and checking of users and the allocation of user permissions
+  - **User Management**
+  - **Role management**
+  - **Menu management**
+
+- **Arbitrary routing error interface**:404
+
+***
+
+## 🔧 Project Setup
+
+```
+pnpm install
+```
+
+## Compile and Hot-Reload for Development
+
+```
+pnpm run dev
+```
+
+## Type-Check, Compile and Minify for Production
+
+```
+pnpm build
+```
+
+## Lint with [ESLint](https://eslint.org/)
+
+```
+pnpm lint
+```
+
+***
+
+## ✔️ Project preview
+
+![Login](C:\Users\扁洲\Pictures\截图\Snipaste_2024-04-18_09-47-46.png)
+
+![front page](C:\Users\扁洲\Pictures\截图\Snipaste_2024-04-18_09-48-55.png)
+
+![data screen](C:\Users\扁洲\Pictures\截图\Snipaste_2024-04-18_09-49-44.png)
+
+![authority management](C:\Users\扁洲\Pictures\截图\Snipaste_2024-04-18_09-50-54.png)
+
+![Product management](C:\Users\扁洲\Pictures\截图\Snipaste_2024-04-18_09-52-08.png)

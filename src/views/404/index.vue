@@ -1,32 +1,11 @@
 <template>
-    <div class="box">
-       <img src="../../assets/images/error_images/404.png" alt="">
-       <button @click="goHome">首页</button>
-    </div>
+  <div class="flex items-center justify-center min-h-screen bg-slate-500">
+    <img
+      src="../../assets/images/error_images/404.png"
+      alt=""
+      class="w-100 h-96"
+    />
+  </div>
 </template>
 
-<script setup lang="ts">
-import {useRouter} from 'vue-router';
-let $router = useRouter();
-const goHome = ()=>{
-   $router.push('/home')
-}
-</script>
-
-<style scoped lang="scss">
-.box{
-  width: 100vw;
-  height: 100vh;
-  background: yellowgreen;
-  display: flex;
-  justify-content: center;
-  img{
-    width: 800px;
-    height: 400px;
-  }
-  button{
-    width: 50px;
-    height: 50px;
-  }
-}
-</style>
+<script setup lang="ts"></script>

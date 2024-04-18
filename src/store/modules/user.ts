@@ -15,7 +15,6 @@ import { constantRoute, asnycRoute, anyRoute } from '@/router/routes'
 
 import cloneDeep from 'lodash/cloneDeep'
 import router from '@/router'
-//用于过滤当前用户需要展示的异步路由
 function filterAsyncRoute(asnycRoute: any, routes: any) {
   return asnycRoute.filter((item: any) => {
     if (routes.includes(item.name)) {
@@ -36,6 +35,7 @@ const useUserStore = defineStore('User', {
       menuRoutes: constantRoute, //仓库存储生成菜单需要数组(路由)
       username: '',
       avatar: '',
+      //用户按钮权限
       buttons: [],
     }
   },
@@ -56,12 +56,12 @@ const useUserStore = defineStore('User', {
     //获取用户信息方法
     async userInfo() {
       const result: userInfoResponseData = await reqUserInfo()
+
       //如果获取用户信息成功，存储一下用户信息
       if (result.code == 200) {
         this.username = result.data.name
         this.avatar = result.data.avatar
         this.buttons = result.data.buttons
-        //计算当前用户需要展示的异步路由
         const userAsyncRoute = filterAsyncRoute(
           cloneDeep(asnycRoute),
           result.data.routes,
